@@ -1,0 +1,32 @@
+services:
+  database:
+    container_name: postgresql_db
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_PASSWORD: 12345678
+      POSTGRES_DB: py_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - flask_api
+ 
+  dbeaver:
+    image: dbeaver/cloudbeaver
+    restart: always
+    depends_on:
+      - database
+    ports:
+      - "8080:8978"
+    networks:
+      - flask_api
+      
+volumes:
+  postgres_data:
+
+networks:
+  flask_api:
+    driver: bridge
