@@ -1,8 +1,6 @@
-# minicurso-python
-
 ## Libs Utilizadas
 
-Reportlab
-Flask
-dotenv
-psycopg
+- Reportlab
+- Flask
+- dotenv
+- psycopg
